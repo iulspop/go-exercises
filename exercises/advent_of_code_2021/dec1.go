@@ -1,6 +1,6 @@
 // To execute Go code, please declare a func main() in a package "main"
 
-package main
+package dec1
 
 import (
 	"fmt"
@@ -36,7 +36,7 @@ iterate from index 1 to last index
 return/output increasedCount
 
 */
-func main() {
+func dec1() {
   depths := cleanData(sampleData())
   fmt.Println(countIncreases(windows(depths)))
 }
