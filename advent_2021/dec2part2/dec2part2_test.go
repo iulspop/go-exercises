@@ -1,9 +1,9 @@
-package dec2
+package dec2part2
 
 import (
 	"go-exercises/assert"
-	"testing"
 	"io/ioutil"
+	"testing"
 )
 
 func TestPosition(t *testing.T) {
@@ -13,13 +13,13 @@ func TestPosition(t *testing.T) {
 	up 3
 	down 8
 	forward 2`
-	expected := [2]int{15, 10} // Horizontal Position & Depth
+	expected := [2]int{15, 60} // Horizontal Position & Depth
 
 	result := Position(input)
 	assert.Equals(t, "Position()", result, expected)
 
-	input2, _ := ioutil.ReadFile("./puzzle_input.txt")
-	expected = [2]int{2199, 786}
+	input2, _ := ioutil.ReadFile("../dec2/puzzle_input.txt")
+	expected = [2]int{2199, 802965}
 
 	result = Position(string(input2))
 	assert.Equals(t, "Position()", result, expected)
