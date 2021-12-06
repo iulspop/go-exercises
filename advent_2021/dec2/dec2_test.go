@@ -3,6 +3,7 @@ package dec2
 import (
 	"go-exercises/assert"
 	"testing"
+	"io/ioutil"
 )
 
 func TestPosition(t *testing.T) {
@@ -15,5 +16,11 @@ func TestPosition(t *testing.T) {
 	expected := [2]int{15, 10} // Horizontal Position & Depth
 
 	result := Position(input)
+	assert.Equals(t, "ScheduleMaxJobs()", result, expected)
+
+	input2, _ := ioutil.ReadFile("./puzzle_input.txt")
+	expected = [2]int{2199, 786}
+
+	result = Position(string(input2))
 	assert.Equals(t, "ScheduleMaxJobs()", result, expected)
 }
