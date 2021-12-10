@@ -16,11 +16,11 @@ func TestPosition(t *testing.T) {
 	expected := [2]int{15, 60} // Horizontal Position & Depth
 
 	result := Position(input)
-	assert.Equals(t, "Position()", result, expected)
+	assert.Equals(t, "Position()", "Given", "Should", result, expected)
 
 	input2, _ := ioutil.ReadFile("../dec2/puzzle_input.txt")
 	expected = [2]int{2199, 802965}
 
 	result = Position(string(input2))
-	assert.Equals(t, "Position()", result, expected)
+	assert.Equals(t, "Position()", "Given", "Should", result, expected)
 }
