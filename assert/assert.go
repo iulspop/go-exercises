@@ -7,7 +7,7 @@ import (
 )
 
 func Equals(t *testing.T, module string, given string, should string, result interface{}, expected interface{}) {
-	message := CreateTestMessage(module, given, should, result, expected)
+	message := createTestMessage(module, given, should, result, expected)
 
 	if reflect.DeepEqual(result, expected) {
 		fmt.Print(message)
@@ -16,7 +16,7 @@ func Equals(t *testing.T, module string, given string, should string, result int
 	}
 }
 
-func CreateTestMessage(module string, given string, should string, result interface{}, expected interface{}) string {
+func createTestMessage(module string, given string, should string, result interface{}, expected interface{}) string {
 	return fmt.Sprintf(
 		`
 %v
