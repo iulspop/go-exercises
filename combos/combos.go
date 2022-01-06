@@ -5,8 +5,6 @@ import (
 	"go-exercises/insertion_sort"
 )
 
-
-
 func Combos(numbers []int, knownSets map[string]bool) [][]int {
 	index := find(numbers, func(i int) bool { return i > 1 })
 	if index == -1 { return [][]int {numbers} }
