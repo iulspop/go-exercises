@@ -5,6 +5,7 @@ import (
 	"go-exercises/insertion_sort"
 )
 
+// Golang solution to Code Wars problem: https://www.codewars.com/kata/555b1890a75b930e63000023/train/javascript
 func Combos(numbers []int, knownSets map[string]bool) [][]int {
 	index := find(numbers, func(i int) bool { return i > 1 })
 	if index == -1 { return [][]int {numbers} }
