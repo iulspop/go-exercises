@@ -14,5 +14,5 @@ func TestCombos(t *testing.T) {
 func TestRemove(t *testing.T)  {
 	result := remove([]int {1, 1, 3}, 2)
 	expected := []int {1, 1}
-	assert.Equals(t, "revome()", "Given a number", "Should return all possible sets that sum to that number", result, expected)
+	assert.Equals(t, "revome()", "Given a slice and an index", "Should return new slice with element removed", result, expected)
 }
