@@ -6,7 +6,7 @@ import (
 )
 
 func TestCombos(t *testing.T) {
-	result := Combos([]int {5})
+	result := Combos([]int {5}, map[string]bool {})
 	expected := [][]int {{5}, {1, 4}, {1, 1, 3}, {1, 1, 1, 2}, {1, 1, 1, 1, 1},  {1, 2, 2}, {2, 3}}
 	assert.Equals(t, "Combos()", "Given a number", "Should return all possible sets that sum to that number", result, expected)
 

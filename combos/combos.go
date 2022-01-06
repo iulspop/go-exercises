@@ -1,22 +1,31 @@
 package combos
 
-import "go-exercises/insertion_sort"
+import (
+	"fmt"
+	"go-exercises/insertion_sort"
+)
 
 
 
-func Combos(numbers []int) [][]int {
+func Combos(numbers []int, knownSets map[string]bool) [][]int {
 	index := find(numbers, func(i int) bool { return i > 1 })
 	if index == -1 { return [][]int {numbers} }
 
 	minuend := numbers[index]
 	sets := [][]int { numbers }
+	knownSets[sliceToString(numbers)] = true
 
 	for subrahend := 1; subrahend <= (minuend / 2); subrahend++ {
 		difference := minuend - subrahend
 
 		newNumbers := remove(numbers, index)
 		newSet := insertion_sort.InsertionSort(append(newNumbers, subrahend, difference))
-		sets = append(sets, Combos(newSet)...)
+
+		if knownSets[sliceToString(newSet)] {
+			return sets
+		} else {
+			sets = append(sets, Combos(newSet, knownSets)...)
+		}
 	}
 
 	return sets
@@ -43,6 +52,10 @@ func remove(slice []int, index int) []int {
 	This means different slices share the same array, leading to unexpected behaviour due to mutation.
 	Creating a new slice using `make` makes sure a new array is created.
 	*/
+}
+
+func sliceToString(slice []int) string {
+	return fmt.Sprint(slice)
 }
 
 /*
