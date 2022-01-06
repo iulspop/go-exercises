@@ -57,65 +57,6 @@ func sliceToString(slice []int) string {
 }
 
 /*
-1. sort
-2. check index
-
-*/
-
-/*
-
-
-1. find index of first number greater than one
-2. if no index return [][]int {n}
-3. minuend = n[index]
-4. init possible sets []
-5. iterate from minuend - 1 to minuend - (minuend - 2) where difference >= 1 |difference| (subtrahend = minuend - difference)
-		1. remove minuend from n
-		2. newSet = [n..., subrahend, difference]
-		3. concat(possible sets, combos(newSet)...)
-4. return possible sets
-
-
-minuend == 1
-=> no iterations
-
-minuend == 2
-=> one iterations
-	subtrahend == 1
-
-miuend == 3
-=> one iterations
-	subtrahend == 1 2, 1
-
-minuend == 4
-=> two iterations
-	subtrahend == 1 3, 1
-	subtrahend == 2 2, 2
-
-minuend == 5
-=> two iterations
-	subtrahend == 1 4, 1
-	subtrahend == 2 3, 2
-
-subrahend iterates from 1 to (minuend / 2)
-
-
-
-
-
-
-
-                    {5}
-
-      {1, 4}                     {2, 3}
-
-{1, 1, 3} {1, 2, 2}
-
-{1, 1, 1, 2}
-
-{1, 1, 1, 1, 1}
-
-
 30 > num > 0
 positive integers that sum
 n = 10 => ~6000ms
@@ -146,15 +87,47 @@ set_index = {}[]int
 		3. concat(possible sets, combos(newSet)...)
 4. return possible sets
 
-
 n=[5]
 [n]=[[]]
-
 
 n=[1,1,1,1,1]
 [n]=[[1,1,1,1,1]]
 
 n=[1,1,1,2]
 [n]=[[1,1,1,2], [1,1,1,1,1]]
+
+
+                                  {5}
+
+                   {1, 4}                     {2, 3}
+
+           {1, 1, 3}  {1, 2, 2}
+
+    {1, 1, 1, 2}
+
+{1, 1, 1, 1, 1}
+
+minuend == 1
+=> no iterations
+
+minuend == 2
+=> one iterations
+	subtrahend == 1
+
+miuend == 3
+=> one iterations
+	subtrahend == 1 2, 1
+
+minuend == 4
+=> two iterations
+	subtrahend == 1 3, 1
+	subtrahend == 2 2, 2
+
+minuend == 5
+=> two iterations
+	subtrahend == 1 4, 1
+	subtrahend == 2 3, 2
+
+subrahend iterates from 1 to (minuend / 2)
 
 */
