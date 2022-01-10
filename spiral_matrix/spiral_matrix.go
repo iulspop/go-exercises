@@ -9,49 +9,34 @@ func SpiralOrder(matrix [][]int) []int {
 	bottom := rows - 1
 	left := 0
 
-	total := rows * columns
 	result := []int {}
 	for {
-		to(left, right, func(current int)  {
-			result = append(result, matrix[top][current])
-		})
+		if (left > right) { break }
+		for i := left; i <= right; i++ {
+			result = append(result, matrix[top][i])
+		}
 		top++
-		if (len(result) >= total) { break }
 
-		to(top, bottom, func(current int)  {
-			result = append(result, matrix[current][right])
-		})
+		if (top > bottom) { break }
+		for i := top; i <= bottom; i++ {
+		result = append(result, matrix[i][right])
+		}
 		right--
-		if (len(result) >= total) { break }
 
-		downto(right, left, func(current int)  {
-			result = append(result, matrix[bottom][current])
-		})
+		if (left > right) { break }
+		for i := right; i >= left; i-- {
+			result = append(result, matrix[bottom][i])
+		}
 		bottom--
-		if (len(result) >= total) { break }
 
-		downto(bottom, top, func(current int)  {
-			result = append(result, matrix[current][left])
-		})
+		if (top > bottom) { break }
+		for i := bottom; i >= top; i-- {
+			result = append(result, matrix[i][left])
+		}
 		left++
-		if (len(result) >= total) { break }
 	}
 
 	return result
-}
-
-func to(from int, to int, callback func(int))  {
-	if from > to { return }
-	for i := from; i <= to; i++ {
-		callback(i)
-	}
-}
-
-func downto(from int, to int, callback func(int))  {
-	if from < to { return }
-	for i := from; i >= to; i-- {
-		callback(i)
-	}
 }
 
 /*
