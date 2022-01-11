@@ -96,6 +96,4 @@ loop until result.length = rows * columns
       4
       5
 
-
-
 */

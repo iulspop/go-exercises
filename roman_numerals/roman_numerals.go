@@ -1,11 +1,32 @@
 package roman_numerals
 
-import (
-	"go-exercises/slice_stack"
-)
+var numerals = map[rune]int {
+	'I': 1,
+	'V': 5,
+	'X': 10,
+	'L': 50,
+	'C': 100,
+	'D': 500,
+	'M': 1000,
+}
 
-func RomanToInt(chars string) string {
+func RomanToInt(chars string) int {
+	runes := []rune(chars)
 
+	sum := 0
+	for i := 0; i < len(runes); i++ {
+		current := numerals[runes[i]]
+		if i == len(runes) -1 { sum += current; break }
+		next := numerals[runes[i + 1]]
+
+		if next > current {
+			sum += (next - current); i++
+		} else {
+			sum += current
+		}
+	}
+
+	return sum
 }
 
 /*
