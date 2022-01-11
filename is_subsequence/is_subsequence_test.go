@@ -13,4 +13,16 @@ func TestIsSubsequence(t *testing.T) {
 	result = IsSubsequence("axc", "ahbgdc")
 	expected = false
 	assert.Equals(t, "IsSubsequence()", "", "", result, expected)
+
+	result = IsSubsequence("axc", "")
+	expected = false
+	assert.Equals(t, "IsSubsequence()", "", "", result, expected)
+
+	result = IsSubsequence("", "")
+	expected = true
+	assert.Equals(t, "IsSubsequence()", "", "", result, expected)
+
+	result = IsSubsequence("", "asda")
+	expected = true
+	assert.Equals(t, "IsSubsequence()", "", "", result, expected)
 }

@@ -5,11 +5,12 @@ func IsSubsequence(s string, t string) bool {
 	trunes := []rune(t)
 
 	for _, srune := range s {
+		found := false
 		for i := anchor; i < len(trunes); i++ {
 			trune := trunes[i]
-			if srune == trune { anchor = i + 1; break }
-			if i == len(trunes) - 1 { return false }
+			if srune == trune { found = true; anchor = i + 1; break }
 		}
+		if !found { return false }
 	}
 
 	return true
