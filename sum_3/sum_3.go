@@ -1,9 +1,15 @@
 package sum_3
 
+import (
+	"fmt"
+	"go-exercises/insertion_sort"
+)
+
 func Sum3(nums []int) [][]int {
 	indexes := indexNums(nums)
 
 	triplets := [][]int {}
+	tripletsIndex := map[string]bool {}
 	for negative := range indexes.negatives {
 		for positive := range indexes.positives {
 			difference := -1 * (negative + positive)
@@ -14,10 +20,10 @@ func Sum3(nums []int) [][]int {
 				if ok {
 					if difference == positive {
 						if count >= 2 {
-							triplets = append(triplets, []int {negative, difference, positive})
+							triplets = insertIfNotIndexed(tripletsIndex, triplets, []int {negative, difference, positive})
 						}
 					} else {
-						triplets = append(triplets, []int {negative, difference, positive})
+						triplets = insertIfNotIndexed(tripletsIndex, triplets, []int {negative, difference, positive})
 					}
 				}
 			}
@@ -28,10 +34,10 @@ func Sum3(nums []int) [][]int {
 				if ok {
 					if difference == negative {
 						if count >= 2 {
-							triplets = append(triplets, []int {negative, difference, positive})
+							triplets = insertIfNotIndexed(tripletsIndex, triplets, []int {negative, difference, positive})
 						}
 					} else {
-						triplets = append(triplets, []int {negative, difference, positive})
+						triplets = insertIfNotIndexed(tripletsIndex, triplets, []int {negative, difference, positive})
 					}
 				}
 			}
@@ -40,7 +46,7 @@ func Sum3(nums []int) [][]int {
 				_, ok := indexes.zeros[difference]
 
 				if ok {
-					triplets = append(triplets, []int {negative, difference, positive})
+					triplets = insertIfNotIndexed(tripletsIndex, triplets, []int {negative, difference, positive})
 				}
 			}
 		}
@@ -77,6 +83,18 @@ func indexNums(nums []int) numsIndexes {
 	}
 
 	return numsIndexes{positives, negatives, zeros}
+}
+
+func insertIfNotIndexed(index map[string]bool, triplets [][]int, triplet []int) [][]int {
+	key := fmt.Sprint(insertion_sort.InsertionSort(triplet))
+	_, ok := index[key]
+
+	if !ok {
+		index[key] = true
+		return append(triplets, triplet)
+	} else {
+		return triplets
+	}
 }
 
 /*

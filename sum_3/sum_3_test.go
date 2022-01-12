@@ -34,3 +34,19 @@ func TestIndexNums(t *testing.T) {
 	assert.Equals(t, "IndexNums()", "", "", result, expected)
 }
 
+func TestInsertIfNotIndexed(t *testing.T) {
+	index := map[string]bool {}
+
+	result := insertIfNotIndexed(index, [][]int {}, []int{-2, -1, 3})
+	expected := [][]int {{-2, -1, 3}}
+
+	assert.Equals(t, "insertIfNotIndexed()", "", "add insert not yet indexed", result, expected)
+
+
+	result = insertIfNotIndexed(index, [][]int {{-2, -1, 3}}, []int{-1, -2, 3})
+	expected = [][]int {{-2, -1, 3}}
+
+	assert.Equals(t, "insertIfNotIndexed()", "", "adds to index && ignores duplicate insert", result, expected)
+}
+
+
