@@ -2,6 +2,10 @@ package insertion_sort
 
 
 func InsertionSort(numbers []int) []int {
+	newNumbers := make([]int, 0)
+	newNumbers = append(newNumbers, numbers...)
+	numbers = newNumbers
+
 	for i := 1; i < len(numbers); i++ {
 		number := numbers[i]
 		for z := i - 1; z >= 0; z-- {
