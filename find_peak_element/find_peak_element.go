@@ -13,11 +13,11 @@ func FindPeakElement(nums []int) int {
   for left <= right {
     mid := (left + right) / 2
     if isPeak(nums, mid) { return mid }
-    if leftOrRight(nums, mid) {
-      right = mid - 1
-    } else {
+    if RightOrLeft(nums, mid) {
       left = mid + 1
-    }
+		} else {
+			right = mid - 1
+		}
   }
 
   return -1
@@ -31,8 +31,8 @@ func isPeak(nums []int, mid int) bool {
   }
 }
 
-func leftOrRight(nums []int, mid int) bool {
-  if nums[mid - 1] > nums[mid] {
+func RightOrLeft(nums []int, mid int) bool {
+  if nums[mid + 1] > nums[mid] {
     return true
   } else {
     return false
