@@ -3,17 +3,22 @@ package jump_game
 func CanJump(nums []int) bool {
   if len(nums) == 1 { return true }
 
-  var helper func(int) bool
-  helper = func(index int) bool {
+  var helper func(int, map[int]bool) bool
+  helper = func(index int, hash map[int]bool) bool {
+		isJump, ok := hash[index]
+		if ok { return isJump }
+
     num := nums[index]
     for jump := num; jump >= 1; jump-- {
       if (index + jump) >= len(nums) - 1 { return true }
-      if helper(index + jump) { return true }
+      if helper(index + jump, hash) { return true }
     }
+
+		hash[index] = false
     return false
   }
 
-  return helper(0)
+  return helper(0, map[int]bool {})
 }
 
 /*
@@ -44,7 +49,9 @@ implicit requirements:
 - there is never a case where you must go over and not land on last index, since if you can jump over, you can jump one less.
 
 test cases:
-[2,3,1,1,4]
+{3,2,1,0,4}
+0
+       3
 
 
        2
