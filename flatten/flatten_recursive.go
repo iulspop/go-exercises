@@ -1,6 +1,6 @@
 package flatten
 
-func FlattenRecursive(slice []interface{}, depth int) []interface{} {
+func FlattenToDepth(slice []interface{}, depth int) []interface{} {
 	newSlice := []interface{} {}
 
 	for i := 0; i < len(slice); i++ {
@@ -17,14 +17,15 @@ func FlattenRecursive(slice []interface{}, depth int) []interface{} {
 	}
 
 	depth--
-	if depth <= 0 {
-		return newSlice
+	if depth > 0 {
+		return FlattenToDepth(newSlice, depth)
 	} else {
-		return FlattenRecursive(newSlice, depth)
+		return newSlice
 	}
 }
 
 /*
+{0, 1, 2, {{3,4}}, }
 
  {0,  {1, 2},  {{{3, 4}}}}, 2)
 
