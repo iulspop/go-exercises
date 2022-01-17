@@ -7,8 +7,7 @@ func CanJump(nums []int) bool {
 
   var helper func(int) bool
   helper = func(index int) bool {
-		isJump, ok := hash[index]
-		if ok { return isJump }
+		if isJump, ok := hash[index]; ok { return isJump }
 
     num := nums[index]
     for jump := num; jump >= 1; jump-- {
@@ -16,12 +15,12 @@ func CanJump(nums []int) bool {
       if helper(index + jump) { return true }
     }
 
-		hash[index] = false
-    return false
+		hash[index] = false; return false
   }
 
   return helper(0)
 }
+
 /*
 algo:
 - define helper as closure including nums
