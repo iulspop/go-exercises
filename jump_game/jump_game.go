@@ -3,24 +3,25 @@ package jump_game
 func CanJump(nums []int) bool {
   if len(nums) == 1 { return true }
 
-  var helper func(int, map[int]bool) bool
-  helper = func(index int, hash map[int]bool) bool {
+  hash := map[int]bool {}
+
+  var helper func(int) bool
+  helper = func(index int) bool {
 		isJump, ok := hash[index]
 		if ok { return isJump }
 
     num := nums[index]
     for jump := num; jump >= 1; jump-- {
       if (index + jump) >= len(nums) - 1 { return true }
-      if helper(index + jump, hash) { return true }
+      if helper(index + jump) { return true }
     }
 
 		hash[index] = false
     return false
   }
 
-  return helper(0, map[int]bool {})
+  return helper(0)
 }
-
 /*
 algo:
 - define helper as closure including nums
