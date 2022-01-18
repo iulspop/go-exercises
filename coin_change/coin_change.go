@@ -29,28 +29,6 @@ func CoinChange(coins []int, amount int) int {
 }
 
 /*
-mental model:
-take amount
-  iterate over denominations
-    if denomination greater than amount, then continue
-    if denomination == amount, return count + 1
-    return helper(amount - denomination, count + 1)
-
-algo:
-coinChange
-- if amount == 0, return 0
-- init helper (with coins in closure)
-- return helper(amount, 0)
-
-helper(amount, count)
-- iterate over coins in reverse order
-  - if coin > amount, continue
-  - if coin == amount, return count + 1
-
-  - result = helper(amount - denomination, count + 1)
-  - if result != -1 { return result }
-- return -1
-
 
 input: coins, amount
 output: fewest num of coins
