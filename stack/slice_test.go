@@ -29,7 +29,7 @@ func TestSliceStack(t *testing.T) {
 
 	result = stack.Size()
 	expected = 4
-	assert.Equals(t, "Stack.Peak()", "Given three elements pushed & one popped & two pushed", "Should return size 4", result, expected)
+	assert.Equals(t, "Stack.Size()", "Given three elements pushed & one popped & two pushed", "Should return size 4", result, expected)
 }
 
 func TestLinkedListStack(t *testing.T) {
@@ -56,5 +56,5 @@ func TestLinkedListStack(t *testing.T) {
 
 	result = stack.Size()
 	expected = 4
-	assert.Equals(t, "Stack.Peak()", "Given three elements pushed & one popped & two pushed", "Should return size 4", result, expected)
+	assert.Equals(t, "Stack.Size()", "Given three elements pushed & one popped & two pushed", "Should return size 4", result, expected)
 }
