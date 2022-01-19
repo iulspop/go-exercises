@@ -1,17 +1,17 @@
 package stack
 
-type ListNode struct {
+type listNode struct {
 	Val int
-  Next *ListNode
+  Next *listNode
 }
 
 type linkedListStack struct {
-	head *ListNode
+	head *listNode
 	length int
 }
 
 func (s *linkedListStack) Push(val int)  {
-	s.head = &ListNode{ val, s.head }
+	s.head = &listNode{ val, s.head }
 	s.length++
 }
 
