@@ -11,8 +11,7 @@ type linkedListStack struct {
 }
 
 func (s *linkedListStack) Push(val int)  {
-	newNode := ListNode{ val, s.head }
-	s.head = &newNode
+	s.head = &ListNode{ val, s.head }
 	s.length++
 }
 
