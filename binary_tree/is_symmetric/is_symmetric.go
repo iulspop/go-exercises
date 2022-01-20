@@ -1,16 +1,12 @@
 package is_symmetric
 
-type TreeNode struct {
-    Val int
-    Left *TreeNode
-    Right *TreeNode
-}
+import "go-exercises/binary_tree"
 
-func IsSymmetric(root *TreeNode) bool {
+func IsSymmetric(root *binary_tree.Node) bool {
   return isMirror(root.Left, root.Right)
 }
 
-func isMirror(leftRoot *TreeNode, rightRoot *TreeNode) bool {
+func isMirror(leftRoot *binary_tree.Node, rightRoot *binary_tree.Node) bool {
   if leftRoot == nil && rightRoot == nil { return true }
   if leftRoot == nil || rightRoot == nil { return false }
 

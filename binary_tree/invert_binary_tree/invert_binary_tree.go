@@ -1,12 +1,8 @@
 package invert_binary_tree
 
-type TreeNode struct {
-		Val int
-		Left *TreeNode
-		Right *TreeNode
-}
+import "go-exercises/binary_tree"
 
-func InvertTree(root *TreeNode) *TreeNode {
+func InvertTree(root *binary_tree.Node) *binary_tree.Node {
   if (root == nil) { return root }
   if (root.Left == nil && root.Right == nil) { return root }
 
