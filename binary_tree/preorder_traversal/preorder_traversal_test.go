@@ -12,6 +12,12 @@ func TestPreorderTraversal(t *testing.T) {
 	assert.Equals(t, "PreorderTraversal()", "", "", result, expected)
 }
 
+func TestPreorderTraversalWithStack(t *testing.T) {
+	result := PreorderTraversalWithStack(utils.CreateTree([]int {4,2,7,1,3,6,9}))
+	expected := []int {4,2,1,3,7,6,9}
+	assert.Equals(t, "PreorderTraversalWithStack()", "", "", result, expected)
+}
+
 /*
 
        4
