@@ -3,10 +3,11 @@ package utils
 import (
 	"go-exercises/assert"
 	"testing"
+	"go-exercises/binary_tree"
 )
 
 func TestCreateTree(t *testing.T) {
-	result := IsSameTree(CreateTree([]int {4,2,7}), &TreeNode{Val: 4, Left: &TreeNode{Val: 2}, Right: &TreeNode{Val: 7}})
+	result := IsSameTree(CreateTree([]int {4,2,7}), &binary_tree.Node{Val: 4, Left: &binary_tree.Node{Val: 2}, Right: &binary_tree.Node{Val: 7}})
 	expected := true
 	assert.Equals(t, "CreateTree()", "", "", result, expected)
 
